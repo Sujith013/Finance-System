@@ -3,6 +3,9 @@
 GET http://localhost:5267/api/stock
 
 ###
+GET http://localhost:5267/api/stock?Symbol=TSLA&CompanyName=TESLA
+
+###
 GET http://localhost:5267/api/stock/3
 
 ###
@@ -27,9 +30,27 @@ Content-Type: application/json
     "companyName": "MICROSOFT",
     "purchase": 96.00,
     "lastDiv": 2.33,
-    "industry": "TECH",
+    "industry": "TECHNO",
     "marketCap": 100100103
 }
 
 ###
-DELETE http://localhost:5267/api/stock/4
+DELETE http://localhost:5267/api/stock/7
+
+###
+GET http://localhost:5267/api/comment
+
+###
+GET http://localhost:5267/api/comment/4
+
+###
+POST http://localhost:5267/api/comment/3
+Content-Type: application/json
+
+{
+   "Title":"TESTING",
+   "Content":"Testing Data Validation"
+}
+
+###
+DELETE  http://localhost:5267/api/comment/4
