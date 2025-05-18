@@ -6,6 +6,12 @@ GET http://localhost:5267/api/stock
 GET http://localhost:5267/api/stock?Symbol=TSLA&CompanyName=TESLA
 
 ###
+GET http://localhost:5267/api/stock?SortBy=CompanyName&IsDescending=true
+
+###
+GET http://localhost:5267/api/stock?PageNumber=1&PageSize=3
+
+###
 GET http://localhost:5267/api/stock/3
 
 ###
