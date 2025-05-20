@@ -174,3 +174,6 @@ E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Microsoft.AspNetCore.
 E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Microsoft.Extensions.Identity.Core.dll
 E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Microsoft.Extensions.Identity.Stores.dll
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
