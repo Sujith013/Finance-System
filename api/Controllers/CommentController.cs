@@ -18,13 +18,15 @@ namespace api.Controllers
     {
         private readonly ICommentRepository _commentRepo;
         private readonly IStockRepository _stockRepo;
+        private readonly IFMPService _fmpService;
         private readonly UserManager<AppUser> _userManager;
 
-        public CommentController(ICommentRepository commentRepo, IStockRepository stockRepo, UserManager<AppUser> userManager)
+        public CommentController(ICommentRepository commentRepo, IStockRepository stockRepo, UserManager<AppUser> userManager, IFMPService fmpService)
         {
             _commentRepo = commentRepo;
             _stockRepo = stockRepo;
             _userManager = userManager;
+            _fmpService = fmpService;
         }
 
         [HttpGet]
@@ -54,19 +56,28 @@ namespace api.Controllers
             return Ok(comment.ToCommentDTO());
         }
 
-        [HttpPost("{stockId:int}")]
-        public async Task<IActionResult> Create([FromRoute] int stockId, [FromBody] CreateCommentDTO commentDTO)
+        [HttpPost("{symbol:alpha}")]
+        public async Task<IActionResult> Create([FromRoute] string symbol, [FromBody] CreateCommentDTO commentDTO)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            if (!await _stockRepo.StockExists(stockId))
-                return BadRequest("Stock Does Not Exist");
+            var stock = await _stockRepo.GetBySymbolAsync(symbol);
+
+            if (stock == null)
+            {
+                stock = await _fmpService.FindStockBySymbolAsync(symbol);
+
+                if (stock == null)
+                    return BadRequest("Stock Does Not Exist");
+
+                await _stockRepo.CreateAsync(stock);
+            }
 
             var username = User.GetUsername();
             var appUser = await _userManager.FindByNameAsync(username);
 
-            var commentModel = commentDTO.ToCommentFromCreate(stockId);
+            var commentModel = commentDTO.ToCommentFromCreate(stock.Id);
 
             #pragma warning disable CS8602 // Dereference of a possibly null reference.
             commentModel.AppUserId = appUser.Id;

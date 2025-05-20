@@ -17,12 +17,14 @@ namespace api.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly IStockRepository _stockRepository;
+        private readonly IFMPService _fmpService;
         private readonly IPortfolioRepository _portfolioRepository;
-        public PortfolioController(UserManager<AppUser> userManager, IStockRepository stockRepository, IPortfolioRepository portfolioRepository)
+        public PortfolioController(UserManager<AppUser> userManager, IStockRepository stockRepository, IPortfolioRepository portfolioRepository, IFMPService fmpService)
         {
             _userManager = userManager;
             _stockRepository = stockRepository;
             _portfolioRepository = portfolioRepository;
+            _fmpService = fmpService;
         }
 
         [HttpGet]
@@ -46,7 +48,15 @@ namespace api.Controllers
             var appUser = await _userManager.FindByNameAsync(username);
             var stock = await _stockRepository.GetBySymbolAsync(symbol);
 
-            if (stock == null) return BadRequest("Stock Not Found");
+            if (stock == null)
+            {
+                stock = await _fmpService.FindStockBySymbolAsync(symbol);
+
+                if (stock == null)
+                    return BadRequest("Stock Does Not Exist");
+
+                await _stockRepository.CreateAsync(stock);
+            }
 
             #pragma warning disable CS8604 // Possible null reference argument.
             var userPortfolio = await _portfolioRepository.GetUserPortfolio(appUser);
