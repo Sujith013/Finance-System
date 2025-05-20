@@ -20,7 +20,7 @@ namespace api.Mappers
                 LastDiv = stockModel.LastDiv,
                 Industry = stockModel.Industry,
                 MarketCap = stockModel.MarketCap,
-                Comments = stockModel.Comments.Select(s=>s.ToCommentDTO()).ToList()
+                Comments = stockModel.Comments.Select(s => s.ToCommentDTO()).ToList()
             };
         }
 
@@ -34,6 +34,19 @@ namespace api.Mappers
                 LastDiv = stockModel.LastDiv,
                 Industry = stockModel.Industry,
                 MarketCap = stockModel.MarketCap,
+            };
+        }
+        
+        public static Stock ToStockFromFMP(this FMPStock fmpStock)
+        {
+            return new Stock
+            {
+                Symbol = fmpStock.symbol,
+                CompanyName = fmpStock.companyName,
+                Purchase = (decimal)fmpStock.price,
+                LastDiv = (decimal)fmpStock.lastDividend,
+                Industry = fmpStock.industry,
+                MarketCap = fmpStock.marketCap,
             };
         }
     }
