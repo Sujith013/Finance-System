@@ -37,5 +37,18 @@ namespace api.Repository
             await _dbContext.SaveChangesAsync();
             return portfolio;
         }
+
+        public async Task<Portfolio> DeleteAsync(AppUser appUser, string symbol)
+        {
+            var portfolioModel = await _dbContext.Portfolio.FirstOrDefaultAsync(s => s.AppUserId == appUser.Id && s.Stock.Symbol.ToLower() == symbol.ToLower());
+
+            if (portfolioModel == null)
+                #pragma warning disable CS8603 // Possible null reference return.
+                return null;
+
+            _dbContext.Portfolio.Remove(portfolioModel);
+            await _dbContext.SaveChangesAsync();
+            return portfolioModel;
+        }
     }
 }
