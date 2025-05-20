@@ -31,7 +31,10 @@ namespace api.Controllers
         {
             var username = User.GetUsername();
             var appUser = await _userManager.FindByNameAsync(username);
+
+            #pragma warning disable CS8604 // Possible null reference argument.
             var userPortfolio = await _portfolioRepository.GetUserPortfolio(appUser);
+
             return Ok(userPortfolio);
         }
 
@@ -45,6 +48,7 @@ namespace api.Controllers
 
             if (stock == null) return BadRequest("Stock Not Found");
 
+            #pragma warning disable CS8604 // Possible null reference argument.
             var userPortfolio = await _portfolioRepository.GetUserPortfolio(appUser);
 
             if (userPortfolio.Any(e => e.Symbol.ToLower() == symbol.ToLower()))
@@ -71,6 +75,7 @@ namespace api.Controllers
             var username = User.GetUsername();
             var appUser = await _userManager.FindByNameAsync(username);
 
+            #pragma warning disable CS8604 // Possible null reference argument.
             var userPortfolio = await _portfolioRepository.GetUserPortfolio(appUser);
 
             if (!userPortfolio.Any(e => e.Symbol.ToLower() == symbol.ToLower()))

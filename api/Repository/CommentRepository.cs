@@ -19,12 +19,12 @@ namespace api.Repository
 
         public async Task<List<Comment>> GetAllAsync()
         {
-            return await _Dbcontext.Comment.ToListAsync();
+            return await _Dbcontext.Comment.Include(a=>a.AppUser).ToListAsync();
         }
 
         public async Task<Comment?> GetByIdAsync(int id)
         {
-            return await _Dbcontext.Comment.FindAsync(id);
+            return await _Dbcontext.Comment.Include(a=>a.AppUser).FirstOrDefaultAsync(c=>c.Id==id);
         }
         
         public async Task<Comment> CreateAsync(Comment commentModel)
