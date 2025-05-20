@@ -19,8 +19,8 @@ POST http://localhost:5267/api/stock
 Content-Type: application/json
 
 {
-   "Symbol" : "AMZN",
-   "CompanyName" : "AMAZON",
+   "Symbol" : "TSLA",
+   "CompanyName" : "TESLA",
    "Purchase" : "150.00",
    "LastDiv" : "3.7",
    "Industry" : "TECHNOLOGY",

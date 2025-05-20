@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using api.Extension;
 using api.interfaces;
 using api.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,12 +26,42 @@ namespace api.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> GetUserPortfolio()
         {
             var username = User.GetUsername();
             var appUser = await _userManager.FindByNameAsync(username);
             var userPortfolio = await _portfolioRepository.GetUserPortfolio(appUser);
             return Ok(userPortfolio);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> AddToPortfolio(string symbol)
+        {
+            var username = User.GetUsername();
+            var appUser = await _userManager.FindByNameAsync(username);
+            var stock = await _stockRepository.GetBySymbolAsync(symbol);
+
+            if (stock == null) return BadRequest("Stock Not Found");
+
+            var userPortfolio = await _portfolioRepository.GetUserPortfolio(appUser);
+
+            if (userPortfolio.Any(e => e.Symbol.ToLower() == symbol.ToLower()))
+                return BadRequest("Stock Already Exists in the Portfolio");
+
+            var portfolioModel = new Portfolio
+            {
+                StockId = stock.Id,
+                AppUserId = appUser.Id
+            };
+
+            await _portfolioRepository.CreateAsync(portfolioModel);
+
+            if (portfolioModel == null)
+                return StatusCode(500, "Could Not Create");
+
+            return Created();
         }
     }
 }
