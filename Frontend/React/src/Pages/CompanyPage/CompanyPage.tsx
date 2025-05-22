@@ -33,13 +33,13 @@ const CompanyPage = () => {
     <Tiles title="DCF" subTitle={company.dcf.toString()}/>
     <CompanyFinder ticker={company.symbol}/>
     <TenKFinder ticker={ticker!}/>
-    <p className="bg-white shadow rounded text-medium text-gray-900 p-3 mt-1 m-4">
+    <p className="text-white dark:bg-gray-800 shadow rounded text-medium text-gray-900 p-3 mt-1 m-4">
       {company.description}
     </p>
   </CompanyDashBoard>
         </div>
       ):(
-      <div>Company Not Found</div>)
+      <div className='text-white'>Company Not Found</div>)
     }</>
   )
 }

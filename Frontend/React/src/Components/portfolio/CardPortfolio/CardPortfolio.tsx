@@ -10,7 +10,7 @@ interface Props{
 
 const CardPortfolio = ({portfolioValue,onPortfolioDelete}:Props) => {
   return (
-    <div className="flex flex-col w-full p-8 space-y-4 text-center rounded-lg shadow-lg md:w-1/3">
+    <div className="flex flex-col w-full p-8 space-y-4 text-center rounded-lg shadow-lg md:w-1/3 text-white dark:bg-gray-800">
       <Link to={'/company/'+portfolioValue.symbol+"/company-profile"} className="pt-6 text-xl font-bold">{portfolioValue.symbol}</Link>
       <DeletePortfolio
         portfolioValue={portfolioValue.symbol}

@@ -14,7 +14,7 @@ const Navbar = (props: Props) => {
       <div className="flex items-center justify-between">
         <div className="flex items-center space-x-20">
           <Link to="/">
-          <img src={logo} alt="" />
+          <img src={logo} alt="" width={40}/>
           </Link>
           <div className="hidden font-bold lg:flex">
             <Link to="/search" className="text-black hover:text-darkBlue">
@@ -22,7 +22,7 @@ const Navbar = (props: Props) => {
             </Link>
           </div>
         </div>
-        {isLoggedIn() ? (        <div className="hidden lg:flex items-center space-x-6 text-back">
+        {isLoggedIn() ? (        <div className="hidden lg:flex items-center space-x-6 text-black font-bold">
           <div className="hover:text-darkBlue">
             Welcome, {user?.username}
           </div>
@@ -31,7 +31,7 @@ const Navbar = (props: Props) => {
               Logout
             </a>
           </div>
-        </div>) : (        <div className="hidden lg:flex items-center space-x-6 text-back">
+        </div>) : (        <div className="hidden lg:flex items-center space-x-6 text-black font-bold">
           <div className="hover:text-darkBlue">
             <Link to="/login" className="text-black hover:text-darkBlue">
               Login

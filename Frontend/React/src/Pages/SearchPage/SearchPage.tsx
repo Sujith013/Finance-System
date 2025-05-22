@@ -52,7 +52,7 @@ const SearchPage = () => {
       
       portfolioAddAPI(e.target[0].value)
         .then((res)=>{
-          if(res?.status==204){
+          if(res?.status==201){
             toast.success("Stock Added to the portfolio")
             getPortfolio()
           }
@@ -76,7 +76,7 @@ const SearchPage = () => {
     }
   
   return (
-    <div className="App">
+    <div className="App dark:bg-gray-900 md:h-screen">
       <Search onSearchSubmit={onSearchSubmit} search={search} handleSearchChange={handleSearchChange}/>
       <ListPortfolio portfolioValues={portfolioValues!} onPortfolioDelete={onPortfolioDelete}/>
       <CardList searchResults = {searchResult} onPortfolioCreate={onPortfolioCreate}/>
