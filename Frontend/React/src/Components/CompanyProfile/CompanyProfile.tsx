@@ -3,6 +3,7 @@ import { CompanyKeyMetrics } from '../../company';
 import { useOutletContext } from 'react-router-dom';
 import { getKeyMetrics } from '../../api';
 import Ratio from '../Ratio/Ratio';
+import StockComment from '../StockComment/StockComment';
 
 const tableConfig = [
   {
@@ -80,7 +81,10 @@ const CompanyProfile = () => {
   return (
     <>
     {companyData?(
-     <><Ratio data={companyData} config={tableConfig}/></>
+     <>
+      <Ratio data={companyData} config={tableConfig}/>
+      <StockComment stockSymbol={ticker}/>
+     </>
     ):(<>Loading...</>)}
     </>
   )
