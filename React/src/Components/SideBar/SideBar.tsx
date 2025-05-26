@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaHome, FaTable, FaMoneyBill } from "react-icons/fa";
-import { FaTableCells } from "react-icons/fa6";
+/* import { FaHome, FaTable, FaMoneyBill } from "react-icons/fa"; */
+/* import { FaTableCells } from "react-icons/fa6"; */
 
 type Props = {};
 
@@ -15,28 +15,28 @@ const Sidebar = (props: Props) => {
               to="company-profile"
               className="flex md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
             >
-              <FaHome />
+              {/* <FaHome /> */}
               <h6 className="ml-3">Company Profile</h6>
             </Link>
             <Link
               to="income-statement"
               className="flex md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
             >
-              <FaTable />
+             {/*  <FaTable /> */}
               <h6 className="ml-3">Income Statement</h6>
             </Link>
             <Link
               to="balance-sheet"
               className="flex md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
             >
-              <FaTableCells />
+             {/*  <FaTableCells /> */}
               <h6 className="ml-3">Balance Sheet</h6>
             </Link>
             <Link
               to="cashflow-statement"
               className="flex md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline"
             >
-              <FaMoneyBill />
+              {/* <FaMoneyBill /> */}
               <h6 className="ml-3">Cashflow Statement</h6>
             </Link>
           </div>
