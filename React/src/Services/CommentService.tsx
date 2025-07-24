@@ -3,7 +3,7 @@ import { CommentGet, CommentPost } from "../Models/Comment";
 import { handleError } from "../Helpers/ErrorHandler";
 import { useAuth } from "../Context/useAuth";
 
-const api = "http://localhost:5267/api/comment/";
+const api = `${process.env.REACT_APP_BACKEND_URL}/api/comment/`;
 
 export const CommentPostAPI = async (title:string,content:string,symbol:string) => {
      try {
