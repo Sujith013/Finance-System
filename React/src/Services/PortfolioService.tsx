@@ -8,7 +8,7 @@ export const portfolioAddAPI = async (symbol:string) => {
     try{
         const token = localStorage.getItem("token");
         
-        const data = await axios.post<PortfolioPost>(api+`?symbol=${symbol}`, { 
+        const data = await axios.post<PortfolioPost>(api+`?symbol=${symbol}`,{}, { 
             headers: { Authorization: `Bearer ${token}` 
         }});
         return data;
