@@ -18,7 +18,7 @@ const validation = Yup.object({
     username:Yup.string().required("Username is required"),
     password:Yup.string().required("Password is required").min(8, "Password must be at least 8 characters")
     .matches(/[A-Z]/, "Password must contain at least one uppercase letter")
-    .matches(/\d/, "Password must contain at least one digit"),
+    .matches(/\d/, "Password must contain at least one digit").matches(/[@_]/,"Password must contain at least one special character (@ or _)"),
 });
 
 const LoginPage = (props:Props) => {
