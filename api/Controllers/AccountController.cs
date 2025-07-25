@@ -17,13 +17,15 @@ namespace api.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
         private readonly ITokenService _tokenService;
+        private readonly IRedisService _redisService;
         private readonly SignInManager<AppUser> _signInManager;
 
-        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager, ITokenService tokenService, SignInManager<AppUser> signInManager, IRedisService redisService)
         {
             _userManager = userManager;
             _tokenService = tokenService;
             _signInManager = signInManager;
+            _redisService = redisService;
         }
 
         [HttpPost("Register")]
@@ -82,11 +84,23 @@ namespace api.Controllers
 
             if (!result.Succeeded) return Unauthorized("Username/ Password incorrect");
 
+            var token = _tokenService.CreateToken(user);
+
+            var userSession = new
+            {
+                Id = user.Id,
+                Username = user.UserName,
+                Email = user.Email,
+                Token = token
+            };
+
+    await _redisService.SetUserSessionAsync(user.Id, userSession, TimeSpan.FromHours(1));
+
             return Ok(new NewUserDTO
             {
                 Username = user.UserName,
                 Email = user.Email,
-                Token = _tokenService.CreateToken(user)
+                Token = token
             });
         }
     }

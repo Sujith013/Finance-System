@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -72,7 +73,7 @@ builder.Services.AddAuthentication(options =>
     options.DefaultForbidScheme =
     options.DefaultSignInScheme =
     options.DefaultSignOutScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(options=>
+}).AddJwtBearer(options =>
 {
 #pragma warning disable CS8604 // Possible null reference argument.
     options.TokenValidationParameters = new TokenValidationParameters
@@ -88,11 +89,29 @@ builder.Services.AddAuthentication(options =>
 #pragma warning restore CS8604 // Possible null reference argument.
 });
 
+builder.Services.AddSingleton<IConnectionMultiplexer>(sp =>
+{
+    var configuration = builder.Configuration.GetConnectionString("RedisConnection");
+
+    if (string.IsNullOrEmpty(configuration))
+    {
+        throw new InvalidOperationException("Redis connection string is not configured.");
+    }
+
+    return ConnectionMultiplexer.Connect(configuration);
+});
+
+builder.Services.AddStackExchangeRedisCache(options =>
+{
+    options.Configuration = builder.Configuration.GetConnectionString("RedisConnection");
+});
+
 builder.Services.AddScoped<IStockRepository,StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IFMPService, FMPService>();
+builder.Services.AddScoped<IRedisService,RedisService>();
 builder.Services.AddHttpClient<IFMPService, FMPService>();
 
 var app = builder.Build();

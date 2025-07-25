@@ -177,3 +177,13 @@ E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Microsoft.Extensions.
 E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\publish\web.config
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\publish\api.deps.json
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\publish\api.runtimeconfig.json
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\publish\api.staticwebassets.endpoints.json
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\publish\appsettings.Development.json
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\publish\appsettings.json
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\Pipelines.Sockets.Unofficial.dll
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\StackExchange.Redis.dll
+E:\Full stack projects\Finance System\api\bin\Debug\net9.0\System.Diagnostics.DiagnosticSource.dll
