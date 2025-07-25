@@ -77,7 +77,7 @@
             },
             "Microsoft.Extensions.Caching.StackExchangeRedis": {
               "target": "Package",
-              "version": "[10.0.0-preview.6.25358.103, )"
+              "version": "[9.0.5, )"
             },
             "Microsoft.Extensions.Identity.Core": {
               "target": "Package",

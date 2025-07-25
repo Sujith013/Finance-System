@@ -32,6 +32,7 @@ E:\Full stack projects\Finance System\api\bin\Release\net9.0\Microsoft.EntityFra
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Microsoft.Extensions.Caching.Abstractions.dll
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Microsoft.Extensions.Caching.Memory.dll
+E:\Full stack projects\Finance System\api\bin\Release\net9.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Microsoft.Extensions.Configuration.Abstractions.dll
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Microsoft.Extensions.DependencyInjection.dll
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
@@ -56,6 +57,8 @@ E:\Full stack projects\Finance System\api\bin\Release\net9.0\Microsoft.Win32.Sys
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Mono.TextTemplating.dll
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Newtonsoft.Json.dll
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Newtonsoft.Json.Bson.dll
+E:\Full stack projects\Finance System\api\bin\Release\net9.0\Pipelines.Sockets.Unofficial.dll
+E:\Full stack projects\Finance System\api\bin\Release\net9.0\StackExchange.Redis.dll
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 E:\Full stack projects\Finance System\api\bin\Release\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

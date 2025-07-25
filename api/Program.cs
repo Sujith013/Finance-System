@@ -106,6 +106,16 @@ builder.Services.AddStackExchangeRedisCache(options =>
     options.Configuration = builder.Configuration.GetConnectionString("RedisConnection");
 });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
 builder.Services.AddScoped<IStockRepository,StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
@@ -126,12 +136,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors(x => x.AllowAnyMethod()
-        .AllowAnyHeader()
-        .AllowCredentials()
-//.WithOrigins("https://localhost:44351)
-        .SetIsOriginAllowed(origin=>true));
+app.UseRouting();
 
+app.UseCors("AllowAll");
 
 app.UseAuthentication();
 app.UseAuthorization();

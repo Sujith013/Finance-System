@@ -62,23 +62,23 @@ Content-Type: application/json
 DELETE  http://localhost:5267/api/comment/4
 
 ###
-POST https://finance-portfolio-gahmdygyggfhepd4.canadacentral-01.azurewebsites.net/api/account/register
+POST https://finance-portfolio-api-dzgce6cva5gdc8hp.canadacentral-01.azurewebsites.net/api/account/register
 Content-Type: application/json
 
 {
-   "username":"sujith015",
+   "username":"sujith014",
    "email":"sujith@gmail.com",
    "password":"Abcde12_"
 }
 
 ###
-POST http://localhost:5267/api/account/login
+POST https://finance-portfolio-api-dzgce6cva5gdc8hp.canadacentral-01.azurewebsites.net/api/account/login
 Content-Type: application/json
 
 {
-   "username":"sujith013",
+   "username":"sujith014",
    "password":"Abcde12_"
 }
 
 ###
-GET http://localhost:5267/api/session/0501f6c0-c021-48c1-9484-c766eb3b5c24
+GET https://finance-portfolio-api-dzgce6cva5gdc8hp.canadacentral-01.azurewebsites.net/api/session/c3d1fb05-917f-4e0c-8bb7-8f19aa7a2708
